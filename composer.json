@@ -1,0 +1,17 @@
+{
+    "name": "sliverwing/exception-reporter-laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sliverwing",
+            "email": "tlv591208510@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+    "psr-4": {
+        "Sliverwing\\ExceptionReporter\\": "src/"
+    }
+}
