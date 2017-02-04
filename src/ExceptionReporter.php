@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use GuzzleHttp\Client;
 
 class ExceptionReporter implements ShouldQueue
 {
@@ -40,7 +41,15 @@ class ExceptionReporter implements ShouldQueue
      */
     public function handle()
     {
-//  TODO: Add Handle
-
+        $client = new Client();
+        $resp = $client->post(config('exception-reporter.url') . 'api/v1/' .config('exception-reporter.token') . '/report', [
+            'form_params' => [
+                'file' => $this->file,
+                'code' => $this->code,
+                'message' => $this->message,
+                'trace' => $this->trace,
+            ]
+        ]);
+//        TODO: Add response handler
     }
 }
