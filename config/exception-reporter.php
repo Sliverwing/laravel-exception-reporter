@@ -2,4 +2,5 @@
 
 return [
     'url' => '',
+    'token' => '',
 ];
