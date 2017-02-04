@@ -9,7 +9,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
     "autoload": {
     "psr-4": {
         "Sliverwing\\ExceptionReporter\\": "src/"
