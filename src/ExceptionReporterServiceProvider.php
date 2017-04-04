@@ -10,7 +10,7 @@ class ExceptionReporterServiceProvider extends ServiceProvider
     {
         $basePath = dirname(__DIR__);
         $this->publishes([
-            $basePath . '/config/exception-reporter.php' => config_path('exception-reporter.php'),
+            $basePath . '/publishable/config/exception-reporter.php' => config_path('exception-reporter.php'),
         ]);
     }
 }
