@@ -1,6 +1,6 @@
 <?php
 
-namespace Sliverwing\ExceptionReporter;
+namespace Sliverwing\ExceptionReporter\ExceptionHandler;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use GuzzleHttp\Client;
 
-class ExceptionReporter implements ShouldQueue
+class ExceptionBotReporter implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
