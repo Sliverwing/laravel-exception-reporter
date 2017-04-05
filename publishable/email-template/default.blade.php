@@ -1,7 +1,7 @@
-{{ message }}
+{{ $message_error }}
 
-{{ code }}
+{{ $code }}
 
-{{ file }}
+{{ $file }}
 
-{{ trace }}
+{{ $trace }}
