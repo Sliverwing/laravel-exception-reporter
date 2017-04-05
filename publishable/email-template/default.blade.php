@@ -1,0 +1,7 @@
+{{ message }}
+
+{{ code }}
+
+{{ file }}
+
+{{ trace }}
