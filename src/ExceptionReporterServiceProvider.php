@@ -12,5 +12,8 @@ class ExceptionReporterServiceProvider extends ServiceProvider
         $this->publishes([
             $basePath . '/publishable/config/exception-reporter.php' => config_path('exception-reporter.php'),
         ]);
+        $this->publishes([
+            $basePath . '/publishable/email-template/' => resource_path('/views/mail/html/exception-reporter'),
+        ]);
     }
 }
