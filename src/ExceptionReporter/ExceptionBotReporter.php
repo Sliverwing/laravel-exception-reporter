@@ -1,6 +1,6 @@
 <?php
 
-namespace Sliverwing\ExceptionReporter\ExceptionHandler;
+namespace Sliverwing\ExceptionReporter\ExceptionReporter;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
