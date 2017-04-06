@@ -4,7 +4,7 @@ namespace Sliverwing\ExceptionReporter\ExceptionReporter;
 
 use Illuminate\Mail\Mailable;
 
-class ExcpetionMailReporter extends Mailable
+class ExceptionMailReporter extends Mailable
 {
 
     use ExceptionBaseReporter;
