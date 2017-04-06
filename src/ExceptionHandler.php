@@ -14,6 +14,10 @@ class ExceptionHandler extends Handler{
 
     public function report(\Exception $exception)
     {
+        if ($this->shouldntReport($exception)) {
+            return;
+        }
+
         if (config('exception-reporter.mail.enable', false))
         {
             $mailTo = config('exception-reporter.mail.to', []);
