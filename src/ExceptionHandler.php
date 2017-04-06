@@ -4,7 +4,7 @@ namespace Sliverwing\ExceptionReporter;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\Mail;
-use \Sliverwing\ExceptionReporter\ExceptionReporter\ExcpetionMailReporter;
+use \Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionMailReporter;
 use Illuminate\Foundation\Exceptions\Handler;
 
 
@@ -19,7 +19,7 @@ class ExceptionHandler extends Handler{
             $mailTo = config('exception-reporter.mail.to', []);
             foreach ($mailTo as $to)
             {
-                Mail::to($to)->queue(new ExcpetionMailReporter(
+                Mail::to($to)->queue(new ExceptionMailReporter(
                     $exception->getFile(),
                     $exception->getCode(),
                     $exception->getMessage(),
