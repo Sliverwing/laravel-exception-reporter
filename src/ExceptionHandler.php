@@ -4,6 +4,7 @@ namespace Sliverwing\ExceptionReporter;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\Mail;
+use Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionDingTalkBotReporter;
 use \Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionMailReporter;
 use Illuminate\Foundation\Exceptions\Handler;
 
@@ -30,6 +31,15 @@ class ExceptionHandler extends Handler{
                     $exception->getTraceAsString()
                 ));
             }
+        }
+        if (config('exception-reporter.dingtalk-bot.enable', false))
+        {
+            $this->dispatch(new ExceptionDingTalkBotReporter(
+                $exception->getFile(),
+                $exception->getCode(),
+                $exception->getMessage(),
+                $exception->getTraceAsString()
+            ));
         }
         parent::report($exception);
     }
