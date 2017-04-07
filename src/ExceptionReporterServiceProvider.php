@@ -18,7 +18,8 @@ class ExceptionReporterServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole())
         {
             $this->commands([
-                Commands\MailTester::class
+                Commands\MailTester::class,
+                Commands\DingTalkBotTester::class,
             ]);
         }
     }
