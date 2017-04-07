@@ -15,5 +15,11 @@ class ExceptionReporterServiceProvider extends ServiceProvider
         $this->publishes([
             $basePath . '/publishable/email-template/' => resource_path('/views/mail/html/exception-reporter'),
         ]);
+        if ($this->app->runningInConsole())
+        {
+            $this->commands([
+                Commands\MailTester::class
+            ]);
+        }
     }
 }
