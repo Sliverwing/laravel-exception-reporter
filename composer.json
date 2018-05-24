@@ -16,5 +16,12 @@
         "psr-4": {
             "Sliverwing\\ExceptionReporter\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "Sliverwing\\ExceptionReporter\\ExceptionReporterServiceProvider"
+            ]
+        }
     }
 }
