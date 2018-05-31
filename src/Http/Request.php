@@ -12,11 +12,13 @@ class Request
     public $query;
     public $fullUrl;
     public $userAgent;
+    public $method;
 
     public function __construct(BaseRequest $request)
     {
         $this->query = $request->getQueryString();
         $this->fullUrl = $request->fullUrl();
         $this->userAgent = $request->userAgent();
+        $this->method = $request->method();
     }
 }

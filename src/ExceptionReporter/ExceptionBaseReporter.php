@@ -25,7 +25,7 @@ trait ExceptionBaseReporter{
      * @param $file
      * @param $code
      * @param $message
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Sliverwing\ExceptionReporter\Http\Request  $request
      * @param $trace
      */
     public function __construct($file, $code, $message, $trace, Request $request)
