@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionDingTalkBotReporter;
 use \Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionMailReporter;
 use Illuminate\Foundation\Exceptions\Handler;
+use Sliverwing\ExceptionReporter\Http\Request;
 
 
 class ExceptionHandler extends Handler{
@@ -19,6 +20,8 @@ class ExceptionHandler extends Handler{
             return;
         }
 
+        $request = new Request(\request());
+
         if (config('exception-reporter.mail.enable', false))
         {
             $mailTo = config('exception-reporter.mail.to', []);
@@ -28,7 +31,8 @@ class ExceptionHandler extends Handler{
                     $exception->getFile(),
                     $exception->getCode(),
                     $exception->getMessage(),
-                    $exception->getTraceAsString()
+                    $exception->getTraceAsString(),
+                    $request
                 ));
             }
         }
@@ -38,7 +42,8 @@ class ExceptionHandler extends Handler{
                 $exception->getFile(),
                 $exception->getCode(),
                 $exception->getMessage(),
-                $exception->getTraceAsString()
+                $exception->getTraceAsString(),
+                $request
             ));
         }
         parent::report($exception);

@@ -18,6 +18,14 @@ class ExceptionDingTalkBotReporter implements ShouldQueue
     public function handle()
     {
         $client =  new GuzzleHttp\Client(['base_uri' => config('exception-reporter.dingtalk-bot.webhook_url')]);
+
+        $text = "**{$this->message}**\n# File Location: {$this->file}\n```\n{$this->trace}\n```\n";
+
+        if (config('exception-reporter.dingtalk-bot.include.request'))
+        {
+            $text .= "Request Url: {$this->request->fullUrl}   \nUser-Agent: {$this->request->userAgent}   \n";
+        }
+
         $client->post(config('exception-reporter.dingtalk-bot.webhook_url'),
             [
                 'headers'=>['Content-Type'=>'application/json'],
@@ -25,7 +33,7 @@ class ExceptionDingTalkBotReporter implements ShouldQueue
                     "msgtype" => "markdown",
                     "markdown" => [
                         "title" => $this->message,
-                        "text" => "**{$this->message}**\n# File Location: {$this->file}\n```\n{$this->trace}\n```"
+                        "text" => $text,
                     ]
                 ]
             ]

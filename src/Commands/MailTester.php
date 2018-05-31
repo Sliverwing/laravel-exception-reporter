@@ -5,6 +5,7 @@ namespace Sliverwing\ExceptionReporter\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Sliverwing\ExceptionReporter\ExceptionReporter\ExceptionMailReporter;
+use Sliverwing\ExceptionReporter\Http\Request;
 
 class MailTester extends Command
 {
@@ -40,13 +41,15 @@ class MailTester extends Command
     public function handle()
     {
         $mailTo = config('exception-reporter.mail.to', []);
+        $request = new Request(\request());
         foreach ($mailTo as $to)
         {
             Mail::to($to)->send(new ExceptionMailReporter(
                 __DIR__,
                 0,
                 'Test Message from exp-reporter:mail:test',
-                '0# Every thing works fine!'
+                '0# Every thing works fine!',
+                $request
             ));
         }
     }

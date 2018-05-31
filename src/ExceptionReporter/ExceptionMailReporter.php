@@ -21,7 +21,8 @@ class ExceptionMailReporter extends Mailable
                 'file' => $this->file,
                 'code' => $this->code,
                 'message_error' => $this->message,
-                'trace' => $this->trace
+                'trace' => $this->trace,
+                'request' => $this->request,
             ]
         );
     }

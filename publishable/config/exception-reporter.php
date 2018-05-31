@@ -6,6 +6,9 @@ return [
     'mail' => [
         'enable' => false,
         'to' => [],
+        'include' => [
+            'request' => false,
+        ],
     ],
     'dingtalk-bot' => [
         'enable' => false,
@@ -14,6 +17,9 @@ return [
             'enable' => false,
             'isAtAll' => false,
             'atMobiles' => [],
-        ]
+        ],
+        'include' => [
+            'request' => false,
+        ],
     ]
 ];
