@@ -23,7 +23,7 @@ class ExceptionDingTalkBotReporter implements ShouldQueue
 
         if (config('exception-reporter.dingtalk-bot.include.request'))
         {
-            $text .= "Request Url: {$this->request->fullUrl}   \nMethod: {$this->request->method}  \nQuery: {$this->request->query}  \nUser-Agent: {$this->request->userAgent}   \n";
+            $text .= "Request Url: {$this->request->fullUrl}   \nClient IP: {$this->request->ip}  \nMethod: {$this->request->method}  \nQuery: {$this->request->query}  \nUser-Agent: {$this->request->userAgent}   \n";
         }
 
         $text .= "```\n{$this->trace}\n```  \n";
