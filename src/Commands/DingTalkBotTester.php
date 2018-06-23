@@ -42,6 +42,7 @@ class DingTalkBotTester extends Command
     {
         $request = new Request(\request());
         dispatch(new ExceptionDingTalkBotReporter(
+            app()->environment(),
             __DIR__,
             0,
             'Test Message from exp-reporter:dingtalk-bot:test',

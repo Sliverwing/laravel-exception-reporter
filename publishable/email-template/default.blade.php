@@ -1,3 +1,5 @@
+{{ $env }}
+
 {{ $message_error }}
 
 {{ $code }}

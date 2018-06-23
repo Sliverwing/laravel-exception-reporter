@@ -18,6 +18,7 @@ class ExceptionMailReporter extends Mailable
     {
         return $this->view('mail.html.exception-reporter.default')->with(
             [
+                'env' => $this->env,
                 'file' => $this->file,
                 'code' => $this->code,
                 'message_error' => $this->message,

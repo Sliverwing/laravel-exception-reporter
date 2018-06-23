@@ -45,6 +45,7 @@ class MailTester extends Command
         foreach ($mailTo as $to)
         {
             Mail::to($to)->send(new ExceptionMailReporter(
+                app()->environment(),
                 __DIR__,
                 0,
                 'Test Message from exp-reporter:mail:test',

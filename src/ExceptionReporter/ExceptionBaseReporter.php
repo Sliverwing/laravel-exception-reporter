@@ -13,6 +13,7 @@ trait ExceptionBaseReporter{
     
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $env;
     protected $file;
     protected $code;
     protected $message;
@@ -28,8 +29,9 @@ trait ExceptionBaseReporter{
      * @param  \Sliverwing\ExceptionReporter\Http\Request  $request
      * @param $trace
      */
-    public function __construct($file, $code, $message, $trace, Request $request)
+    public function __construct($env, $file, $code, $message, $trace, Request $request)
     {
+        $this->env = $env;
         $this->file = $file;
         $this->code = $code;
         $this->message = $message;

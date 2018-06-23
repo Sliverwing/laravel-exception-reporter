@@ -19,7 +19,7 @@ class ExceptionDingTalkBotReporter implements ShouldQueue
     {
         $client =  new GuzzleHttp\Client(['base_uri' => config('exception-reporter.dingtalk-bot.webhook_url')]);
 
-        $text = "**{$this->message}**\n# File Location: {$this->file}\n";
+        $text = "**Environment: {$this->env}**  \n**{$this->message}**\n# File Location: {$this->file}\n";
 
         if (config('exception-reporter.dingtalk-bot.include.request'))
         {
