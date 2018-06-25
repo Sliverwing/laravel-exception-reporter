@@ -8,6 +8,7 @@ return [
         'to' => [],
         'include' => [
             'request' => false,
+            'sql' => true,
         ],
     ],
     'dingtalk-bot' => [
@@ -20,6 +21,7 @@ return [
         ],
         'include' => [
             'request' => false,
+            'sql' => true,
         ],
     ]
 ];
