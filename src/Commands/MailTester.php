@@ -37,21 +37,12 @@ class MailTester extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function handle()
     {
-        $mailTo = config('exception-reporter.mail.to', []);
-        $request = new Request(\request());
-        foreach ($mailTo as $to)
-        {
-            Mail::to($to)->send(new ExceptionMailReporter(
-                app()->environment(),
-                __DIR__,
-                0,
-                'Test Message from exp-reporter:mail:test',
-                '0# Every thing works fine!',
-                $request
-            ));
-        }
+        config(['exception-reporter.mail.enable' => true]);
+        config(['exception-reporter.dingtalk-bot.enable' => false]);
+        throw new \Exception("Test mail channel");
     }
 }

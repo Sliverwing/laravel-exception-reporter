@@ -40,14 +40,8 @@ class DingTalkBotTester extends Command
      */
     public function handle()
     {
-        $request = new Request(\request());
-        dispatch(new ExceptionDingTalkBotReporter(
-            app()->environment(),
-            __DIR__,
-            0,
-            'Test Message from exp-reporter:dingtalk-bot:test',
-            '0# Every thing works fine!',
-            $request
-        ));
+        config(['exception-reporter.mail.enable' => false]);
+        config(['exception-reporter.dingtalk-bot.enable' => true]);
+        throw new \Exception('Test dingtalk bot channel');
     }
 }
