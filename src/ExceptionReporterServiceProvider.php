@@ -2,6 +2,7 @@
 
 namespace Sliverwing\ExceptionReporter;
 
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class ExceptionReporterServiceProvider extends ServiceProvider
@@ -21,6 +22,11 @@ class ExceptionReporterServiceProvider extends ServiceProvider
                 Commands\MailTester::class,
                 Commands\DingTalkBotTester::class,
             ]);
+        }
+
+        if (config('exception-reporter.mail.include.sql') || config('exception-reporter.dingtalk-bot.include.sql'))
+        {
+            DB::connection()->enableQueryLog();
         }
     }
 }
