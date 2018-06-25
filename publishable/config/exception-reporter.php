@@ -9,6 +9,7 @@ return [
         'include' => [
             'request' => false,
             'sql' => true,
+            'log' => false,
         ],
     ],
     'dingtalk-bot' => [
@@ -22,6 +23,7 @@ return [
         'include' => [
             'request' => false,
             'sql' => true,
+            'log' => false,
         ],
     ]
 ];

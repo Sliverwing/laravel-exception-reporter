@@ -12,6 +12,10 @@
     {{ $sql }}
 @endif
 
+@if(config('exception-reporter.mail.include.sql'))
+    {{ $log }}
+@endif
+
 @if(config('exception-reporter.mail.include.request'))
     Full Url: {{ $request->fullUrl }}
     Client IP: {{ $request->ip }}

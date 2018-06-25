@@ -31,6 +31,11 @@ class ExceptionMailReporter extends Mailable
             $data['sql'] = $query;
         }
 
+        if (config('exception-reporter.mail.include.log'))
+        {
+            $data['log'] = $this->log;
+        }
+
         return $this->view('mail.html.exception-reporter.default')->with($data);
     }
 }

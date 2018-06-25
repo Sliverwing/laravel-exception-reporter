@@ -21,10 +21,10 @@ trait ExceptionBaseReporter{
     protected $trace;
     protected $request;
     protected $queries;
+    protected $log;
 
     /**
      * ExceptionReporter constructor.
-     * @param $env
      * @param $file
      * @param $code
      * @param $message
@@ -50,8 +50,11 @@ trait ExceptionBaseReporter{
                 $this->queries = [];
             }
         }
+        if (config('exception-reporter.mail.include.log') || config('exception-reporter.dingtalk-bot.include.log'))
+        {
+            $this->log = app('exception-reporter-logger')->getPlainLog();
+        }
     }
-
 
     /**
      * formatQueryLog
