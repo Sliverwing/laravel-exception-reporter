@@ -22,15 +22,12 @@ class ExceptionHandler extends Handler{
 
         $request = new Request(\request());
 
-        $env = app()->environment();
-
         if (config('exception-reporter.mail.enable', false))
         {
             $mailTo = config('exception-reporter.mail.to', []);
             foreach ($mailTo as $to)
             {
                 Mail::to($to)->queue(new ExceptionMailReporter(
-                    $env,
                     $exception->getFile(),
                     $exception->getCode(),
                     $exception->getMessage(),
@@ -42,7 +39,6 @@ class ExceptionHandler extends Handler{
         if (config('exception-reporter.dingtalk-bot.enable', false))
         {
             $this->dispatch(new ExceptionDingTalkBotReporter(
-                $env,
                 $exception->getFile(),
                 $exception->getCode(),
                 $exception->getMessage(),

@@ -16,15 +16,21 @@ class ExceptionMailReporter extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.html.exception-reporter.default')->with(
-            [
-                'env' => $this->env,
-                'file' => $this->file,
-                'code' => $this->code,
-                'message_error' => $this->message,
-                'trace' => $this->trace,
-                'request' => $this->request,
-            ]
-        );
+        $data = [
+            'env' => $this->env,
+            'file' => $this->file,
+            'code' => $this->code,
+            'message_error' => $this->message,
+            'trace' => $this->trace,
+            'request' => $this->request,
+        ];
+
+        if (config('exception-reporter.mail.include.sql'))
+        {
+            $query = $this->formatQueryLog();
+            $data['sql'] = $query;
+        }
+
+        return $this->view('mail.html.exception-reporter.default')->with($data);
     }
 }

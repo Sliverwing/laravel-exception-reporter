@@ -26,6 +26,11 @@ class ExceptionDingTalkBotReporter implements ShouldQueue
             $text .= "Request Url: {$this->request->fullUrl}   \nClient IP: {$this->request->ip}  \nMethod: {$this->request->method}  \nQuery: {$this->request->query}  \nUser-Agent: {$this->request->userAgent}   \n";
         }
 
+        if (config('exception-reporter.dingtalk-bot.include.sql'))
+        {
+            $text .= "Sql: {$this->formatQueryLog()}  \n";
+        }
+
         $text .= "```\n{$this->trace}\n```  \n";
 
         $client->post(config('exception-reporter.dingtalk-bot.webhook_url'),
